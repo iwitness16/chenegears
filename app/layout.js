@@ -27,7 +27,30 @@ const body = localFont({
 
 export const metadata = {
   title: "Chêne | Waders, Jackets & Boots Built by Waterfowl Hunters",
-  description: "Waders, jackets, and boots built by waterfowl hunters.",
+  description: "Waders, jackets, and boots built by waterfowl hunters. Lifetime warranty. Repaired in-house within 7 business days.",
+  metadataBase: new URL("https://chenegears.com"),
+  openGraph: {
+    title: "Chêne Gear | Built by Waterfowl Hunters",
+    description: "Waders, jackets, and boots built by waterfowl hunters. Lifetime warranty. Repaired in-house within 7 business days.",
+    url: "https://chenegears.com",
+    siteName: "Chêne Gear",
+    images: [
+      {
+        url: "/images/fav.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Chêne Gear — Built by Waterfowl Hunters",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Chêne Gear | Built by Waterfowl Hunters",
+    description: "Waders, jackets, and boots built by waterfowl hunters.",
+    images: ["/images/fav.jpg"],
+  },
 };
 
 export default function RootLayout({ children }) {
