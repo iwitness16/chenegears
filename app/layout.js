@@ -2,6 +2,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { CartProvider } from "@/context/CartContext";
 import SiteShell from "@/components/SiteShell";
+import Smartsupp from "@/components/Smartsupp";
 
 // Headings / nav / buttons — Montserrat served from local files
 const head = localFont({
@@ -60,6 +61,7 @@ export default function RootLayout({ children }) {
         <CartProvider>
           <SiteShell>{children}</SiteShell>
         </CartProvider>
+        <Smartsupp />
       </body>
     </html>
   );
