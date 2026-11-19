@@ -1,8 +1,8 @@
 import localFont from "next/font/local";
+import Script from "next/script";
 import "./globals.css";
 import { CartProvider } from "@/context/CartContext";
 import SiteShell from "@/components/SiteShell";
-import Smartsupp from "@/components/Smartsupp";
 
 // Headings / nav / buttons — Montserrat served from local files
 const head = localFont({
@@ -57,11 +57,29 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${head.variable} ${body.variable}`}>
+      <head>
+        {/* Smartsupp Live Chat — placed in <head> exactly as instructed */}
+        <Script
+          id="smartsupp-chat"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+var _smartsupp = _smartsupp || {};
+_smartsupp.key = 'f91864637401f4b33c53beb052304b3212e384fd';
+window.smartsupp||(function(d) {
+  var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+  s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+  c.type='text/javascript';c.charset='utf-8';c.async=true;
+  c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+})(document);
+            `,
+          }}
+        />
+      </head>
       <body>
         <CartProvider>
           <SiteShell>{children}</SiteShell>
         </CartProvider>
-        <Smartsupp />
       </body>
     </html>
   );
