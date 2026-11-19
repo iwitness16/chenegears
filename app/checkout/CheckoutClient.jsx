@@ -39,9 +39,10 @@ export default function CheckoutClient() {
 
   function validate() {
     const e = {};
-    if (!form.name.trim())    e.name    = "Name is required.";
-    if (!form.email.trim())   e.email   = "Email is required.";
-    if (!form.address.trim()) e.address = "Address is required.";
+    if (!form.name.trim())    e.name    = "Full name is required.";
+    if (!form.email.trim())   e.email   = "Email address is required.";
+    if (!form.phone.trim())   e.phone   = "Phone number is required.";
+    if (!form.address.trim()) e.address = "Shipping address is required.";
     if (!form.paymentMethod)  e.paymentMethod = "Please select a payment method.";
     setErrors(e);
     return Object.keys(e).length === 0;
@@ -180,10 +181,11 @@ export default function CheckoutClient() {
                 </div>
 
                 <div className="co-field">
-                  <label className="co-label" htmlFor="phone">Phone number</label>
-                  <input id="phone" name="phone" type="tel" autoComplete="tel"
-                    value={form.phone} onChange={update} className="co-input"
+                  <label className="co-label" htmlFor="phone">Phone number *</label>
+                  <input id="phone" name="phone" type="tel" autoComplete="tel" required
+                    value={form.phone} onChange={update} className={`co-input${errors.phone ? " co-input--error" : ""}`}
                     placeholder="+1 (555) 000-0000" />
+                  {errors.phone && <p className="co-field-error">{errors.phone}</p>}
                 </div>
 
                 <div className="co-field">
